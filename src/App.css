@@ -10173,131 +10173,258 @@ body,
   }
 
 }
+
 /* =========================================================
-   CONSISTENT CASE STUDY BACK LINK
+   RESUME PAGE
 ========================================================= */
 
-.case-study-footer {
-  margin-top: 80px;
+.resume-page {
+  min-height: 100vh;
 
-  padding-top: 35px;
+  width: min(1400px, calc(100% - 120px));
 
-  padding-bottom: 50px;
+  margin: 0 auto;
+
+  padding: 100px 0 120px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.resume-page-header {
+  max-width: 900px;
+
+  margin-bottom: 80px;
+}
+
+.resume-page-header h1 {
+  margin: 0;
+
+  font-size: clamp(58px, 7vw, 100px);
+
+  line-height: 0.9;
+
+  letter-spacing: -5px;
+
+  font-weight: 700;
+}
+
+.resume-page-header > p:last-child {
+  max-width: 820px;
+
+  margin-top: 32px;
+
+  color: #8a8a8a;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   RESUME LIST
+========================================================= */
+
+.resume-list {
+  width: 100%;
 
   border-top: 1px solid #292929;
 }
 
-.case-study-footer a {
+
+/* =========================================================
+   RESUME ITEM
+========================================================= */
+
+.resume-item {
+  display: grid;
+
+  grid-template-columns: 90px minmax(0, 1fr);
+
+  column-gap: 40px;
+
+  padding: 48px 0;
+
+  border-bottom: 1px solid #292929;
+}
+
+.resume-item-number {
+  padding-top: 5px;
+
+  color: #555;
+
+  font-size: 11px;
+
+  letter-spacing: 0.2em;
+}
+
+.resume-item-content {
+  min-width: 0;
+
+  max-width: 1050px;
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.resume-item-category {
+  margin: 0 0 12px;
+
+  color: #6d6d6d;
+
+  font-size: 9px;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.resume-item-content h2 {
+  margin: 0;
+
+  font-size: clamp(32px, 4vw, 54px);
+
+  line-height: 1;
+
+  letter-spacing: -2.5px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.resume-item-description {
+  max-width: 850px;
+
+  margin: 20px 0 24px;
+
+  color: #858585;
+
+  font-size: 13px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   TECHNOLOGIES
+========================================================= */
+
+.resume-item-technologies {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 22px;
+
+  margin-bottom: 30px;
+}
+
+.resume-item-technologies span {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 7px 11px;
+
+  border: 1px solid #353535;
+
+  background: rgba(255, 255, 255, 0.02);
+
+  color: #858585;
+
+  font-size: 9px;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.resume-item-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 30px;
+
+  margin-top: 5px;
+}
+
+.resume-view-link,
+.resume-download-link {
   display: inline-block;
 
-  color: #aaa;
+  color: #bdbdbd;
 
-  font-size: 14px;
+  font-size: 12px;
 
   font-weight: 500;
 
   text-decoration: underline;
 
-  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 5px;
+
+  white-space: nowrap;
 
   transition:
-    color 0.25s ease,
-    transform 0.25s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.case-study-footer a:hover {
+.resume-view-link:hover,
+.resume-download-link:hover {
   color: #fff;
 
-  transform: translateX(-4px);
+  transform: translateX(3px);
 }
 
 
 /* =========================================================
-   REMOVE OLD BOXED QA / WATER BACK LINK STYLES
+   FOOTER
 ========================================================= */
 
-.qa-back-bottom,
-.qa-back-button,
-.water-back-bottom {
-  all: unset;
+.resume-page-footer {
+  margin-top: 55px;
 }
 
+.resume-page-footer p {
+  max-width: 700px;
 
-/* =========================================================
-   WATER DISPENSER IMAGE
-========================================================= */
+  margin: 0;
 
-.water-image {
-  width: 100% !important;
+  color: #555;
 
-  margin: 70px 0 80px !important;
+  font-size: 10px;
 
-  padding: 0 !important;
-
-  border: 1px solid #292929 !important;
-
-  background: #0d0d0d !important;
-
-  overflow: hidden !important;
-
-  display: flex !important;
-
-  justify-content: center !important;
-
-  align-items: center !important;
-}
-
-.water-project-image {
-  display: block !important;
-
-  width: min(820px, 100%) !important;
-
-  height: auto !important;
-
-  max-width: 100% !important;
-
-  max-height: none !important;
-
-  object-fit: contain !important;
-
-  margin: 0 auto !important;
-
-  background: #111 !important;
-}
-
-
-/* =========================================================
-   WATER NOTE
-========================================================= */
-
-.water-note {
-  width: min(1000px, 100%) !important;
-
-  max-width: none !important;
-
-  padding: 32px 36px !important;
-
-  border: 1px solid #292929 !important;
-
-  background: rgba(13, 13, 13, 0.92) !important;
-
-  box-sizing: border-box !important;
-}
-
-.water-note .section-label {
-  margin-bottom: 18px !important;
-}
-
-.water-note p:last-child {
-  margin: 0 !important;
-
-  max-width: 850px !important;
-
-  color: #858585 !important;
-
-  font-size: 14px !important;
-
-  line-height: 1.8 !important;
+  line-height: 1.7;
 }
 
 
@@ -10307,24 +10434,50 @@ body,
 
 @media (max-width: 700px) {
 
-  .case-study-footer {
-    margin-top: 60px;
+  .resume-page {
+    width: calc(100% - 32px);
 
-    padding-top: 30px;
-
-    padding-bottom: 35px;
+    padding: 75px 0 90px;
   }
 
-  .water-project-image {
-    width: 100% !important;
-
-    max-width: 100% !important;
+  .resume-page-header {
+    margin-bottom: 60px;
   }
 
-  .water-note {
-    width: 100% !important;
+  .resume-page-header h1 {
+    font-size: 55px;
 
-    padding: 25px !important;
+    letter-spacing: -4px;
+  }
+
+  .resume-page-header > p:last-child {
+    font-size: 13px;
+  }
+
+  .resume-item {
+    grid-template-columns: 1fr;
+
+    row-gap: 16px;
+
+    padding: 38px 0;
+  }
+
+  .resume-item-number {
+    padding-top: 0;
+  }
+
+  .resume-item-content h2 {
+    font-size: 34px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .resume-item-description {
+    font-size: 13px;
+  }
+
+  .resume-item-actions {
+    gap: 22px;
   }
 
 }

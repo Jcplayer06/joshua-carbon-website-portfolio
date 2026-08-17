@@ -1,10 +1,62 @@
 export default function ResumePage() {
+  const resumes = [
+    {
+      number: "01",
+      category: "SOFTWARE ENGINEERING",
+      title: "Computer Engineer / Software Developer",
+      description:
+        "Tailored for software development opportunities, highlighting C#, Python, C++, object-oriented programming, desktop applications, debugging, and software engineering projects.",
+      technologies: [
+        "C#",
+        "Python",
+        "C++",
+        "OOP",
+        "Git",
+      ],
+      file: "/resumes/software-engineer-resume.pdf",
+    },
+
+    {
+      number: "02",
+      category: "QA AUTOMATION / SDET",
+      title: "Computer Engineer / QA Automation",
+      description:
+        "Tailored for QA automation and SDET opportunities, highlighting Python, Robot Framework, Selenium, test design, debugging, reporting, and automation framework development.",
+      technologies: [
+        "Python",
+        "Robot Framework",
+        "Selenium",
+        "Test Automation",
+        "QA",
+      ],
+      file: "/resumes/qa-automation-resume.pdf",
+    },
+
+    {
+      number: "03",
+      category: "ARTIFICIAL INTELLIGENCE",
+      title: "Computer Engineer / AI Developer",
+      description:
+        "Tailored for AI and computer vision opportunities, highlighting Python, YOLOv5, OpenCV, Roboflow, Microsoft Copilot Studio, Raspberry Pi, and AI-focused projects.",
+      technologies: [
+        "Python",
+        "YOLOv5",
+        "OpenCV",
+        "Roboflow",
+        "AI",
+      ],
+      file: "/resumes/ai-developer-resume.pdf",
+    },
+  ];
+
   return (
     <main className="resume-page">
 
-      {/* HERO */}
+      {/* =================================================
+          PAGE HEADER
+      ================================================= */}
 
-      <section className="resume-hero">
+      <section className="resume-page-header">
 
         <p className="section-label">
           RESUME
@@ -16,206 +68,113 @@ export default function ResumePage() {
           for the role.
         </h1>
 
-        <p className="resume-intro">
-          I maintain tailored versions of my resume for
-          different engineering and software roles, 
-          highlighting the skills, projects, and technical experience most relevant to each role.
+        <p>
+          I maintain tailored versions of my resume
+          for different engineering and software roles.
+          Each version emphasizes the experience and
+          technical skills most relevant to its target
+          position.
         </p>
 
       </section>
 
 
-      {/* RESUME LIST */}
+      {/* =================================================
+          RESUME LIST
+      ================================================= */}
 
       <section className="resume-list">
 
-        {/* QA AUTOMATION */}
+        {resumes.map((resume) => (
 
-        <article className="resume-item">
+          <article
+            key={resume.file}
+            className="resume-item"
+          >
 
-          <div className="resume-number">
-            01
-          </div>
+            {/* NUMBER */}
 
-          <div className="resume-main">
+            <div className="resume-item-number">
+              {resume.number}
+            </div>
 
-            <p className="resume-category">
-              QA AUTOMATION / SDET
-            </p>
 
-            <h2>
-              Computer Engineer / QA Automation
-            </h2>
+            {/* CONTENT */}
 
-            <p>
-              Tailored for QA Automation, SDET, software
-              testing, and test automation opportunities.
-              Highlights Python, Robot Framework, Selenium,
-              debugging, test design, and automation framework
-              development.
-            </p>
+            <div className="resume-item-content">
 
-            <div className="resume-tags">
+              <p className="resume-item-category">
+                {resume.category}
+              </p>
 
-              <span>Python</span>
-              <span>Robot Framework</span>
-              <span>Selenium</span>
-              <span>Test Automation</span>
-              <span>Git</span>
+              <h2>
+                {resume.title}
+              </h2>
+
+              <p className="resume-item-description">
+                {resume.description}
+              </p>
+
+
+              {/* TECHNOLOGIES */}
+
+              <div className="resume-item-technologies">
+
+                {resume.technologies.map(
+                  (technology) => (
+                    <span
+                      key={technology}
+                    >
+                      {technology}
+                    </span>
+                  )
+                )}
+
+              </div>
+
+
+              {/* ACTIONS */}
+
+              <div className="resume-item-actions">
+
+                <a
+                  href={resume.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resume-view-link"
+                >
+                  View Resume →
+                </a>
+
+                <a
+                  href={resume.file}
+                  download
+                  className="resume-download-link"
+                >
+                  Download PDF ↓
+                </a>
+
+              </div>
 
             </div>
 
-            <div className="resume-actions">
+          </article>
 
-              <a
-                href="/resumes/Joshua-Carbon-QA-Automation-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Resume →
-              </a>
-
-              <a
-                href="/resumes/Joshua-Carbon-QA-Automation-Resume.pdf"
-                download
-              >
-                Download PDF ↓
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        {/* SOFTWARE DEVELOPMENT */}
-
-        <article className="resume-item">
-
-          <div className="resume-number">
-            02
-          </div>
-
-          <div className="resume-main">
-
-            <p className="resume-category">
-              SOFTWARE DEVELOPMENT
-            </p>
-
-            <h2>
-              Computer Engineer / Software Developer
-            </h2>
-
-            <p>
-              Tailored for junior software development
-              opportunities, highlighting C#, Python,
-              C++, object-oriented programming, desktop
-              applications, debugging, and software projects.
-            </p>
-
-            <div className="resume-tags">
-
-              <span>C#</span>
-              <span>Python</span>
-              <span>C++</span>
-              <span>OOP</span>
-              <span>Git</span>
-
-            </div>
-
-            <div className="resume-actions">
-
-              <a
-                href="/resumes/Joshua-Carbon-Software-Developer-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Resume →
-              </a>
-
-              <a
-                href="/resumes/Joshua-Carbon-Software-Developer-Resume.pdf"
-                download
-              >
-                Download PDF ↓
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        {/* AI DEVELOPER */}
-
-        <article className="resume-item">
-
-          <div className="resume-number">
-            03
-          </div>
-
-          <div className="resume-main">
-
-            <p className="resume-category">
-              ARTIFICIAL INTELLIGENCE
-            </p>
-
-            <h2>
-              Computer Engineer / AI Developer
-            </h2>
-
-            <p>
-              Tailored for AI, computer vision, and related
-              engineering opportunities, highlighting Python,
-              YOLOv5, OpenCV, Roboflow, Microsoft Copilot Studio,
-              Raspberry Pi, and AI-focused projects.
-            </p>
-
-            <div className="resume-tags">
-
-              <span>Python</span>
-              <span>YOLOv5</span>
-              <span>OpenCV</span>
-              <span>Roboflow</span>
-              <span>AI</span>
-
-            </div>
-
-            <div className="resume-actions">
-
-              <a
-                href="/resumes/Joshua-Carbon-ai-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Resume →
-              </a>
-
-              <a
-                href="/resumes/Joshua-Carbon-ai-Resume.pdf"
-                download
-              >
-                Download PDF ↓
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
+        ))}
 
       </section>
 
 
-      {/* FOOTER NOTE */}
+      {/* =================================================
+          FOOTER NOTE
+      ================================================= */}
 
-      <section className="resume-note">
+      <section className="resume-page-footer">
 
         <p>
           Each version presents the same engineering
-          background from a different role-focused perspective.
+          background from a different role-focused
+          perspective.
         </p>
 
       </section>
