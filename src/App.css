@@ -8500,9 +8500,10 @@ footer {
 .contact-details {
   display: flex !important;
   flex-direction: row !important;
+  flex-wrap: wrap;
   align-items: stretch;
   justify-content: flex-start;
-  gap: 80px;
+  gap: 40px 48px;
   width: 100%;
   border-top: 1px solid #292929;
   padding-top: 32px;
@@ -8520,7 +8521,8 @@ footer {
 
   gap: 20px;
 
-  min-width: 330px;
+  min-width: 260px;
+  flex: 1 1 260px;
 
   color: #d0d0d0;
   text-decoration: none;
@@ -8657,6 +8659,7 @@ footer {
   .contact-item {
     min-width: 0;
     width: fit-content;
+    flex: none;
   }
 
   .contact-value {
