@@ -13,6 +13,7 @@ import JapaneseCharacterPage from "./pages/JapaneseCharacterPage";
 import SmartParkingPage from "./pages/SmartParkingPage";
 import MotorPHPage from "./pages/MotorPHPage";
 import WaterDispenserPage from "./pages/WaterDispenserPage";
+import PortfolioWebsitePage from "./pages/PortfolioWebsitePage";
 
 import heroBackground from "./assets/hero-tech-bg.png";
 
@@ -108,6 +109,14 @@ function App() {
           <Route
             path="/projects/water-dispenser"
             element={<WaterDispenserPage />}
+          />
+
+
+          {/* PORTFOLIO WEBSITE */}
+
+          <Route
+            path="/projects/portfolio-website"
+            element={<PortfolioWebsitePage />}
           />
 
         </Routes>

@@ -4,6 +4,7 @@ import qaAutomationImage from "../assets/projects/qa-automation.png";
 import smartParkingImage from "../assets/projects/smart-parking.png";
 import motorPHImage from "../assets/projects/motorph.png";
 import waterDispenserImage from "../assets/projects/water-dispenser.png";
+import portfolioWebsiteImage from "../assets/projects/portfolio-website.png";
 
 export interface Project {
   id: string;
@@ -227,5 +228,38 @@ export const projects: Project[] = [
     ],
 
     featured: false,
+  },
+
+
+  // ==========================================
+  // 07 - PORTFOLIO WEBSITE
+  // ==========================================
+
+  {
+    id: "portfolio-website",
+
+    number: "07",
+
+    category: "WEB DEVELOPMENT",
+
+    title: "Personal Portfolio Website",
+
+    description:
+      "This site — a React, TypeScript, and Vite portfolio with React Router-based case study pages per project, a role-tailored resume selector, and a hand-built dark-mode design system.",
+
+    image: portfolioWebsiteImage,
+
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Router",
+      "CSS",
+    ],
+
+    featured: false,
+
+    github:
+      "https://github.com/Jcplayer06/joshua-carbon-website-portfolio",
   },
 ];

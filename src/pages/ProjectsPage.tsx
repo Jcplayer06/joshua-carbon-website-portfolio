@@ -6,6 +6,7 @@ import japaneseCharacterImage from "../assets/projects/japanese-character.png";
 import smartParkingImage from "../assets/projects/smart-parking.png";
 import motorPHImage from "../assets/projects/motorph.png";
 import waterDispenserImage from "../assets/projects/water-dispenser.png";
+import portfolioWebsiteImage from "../assets/projects/portfolio-website.png";
 
 const projects = [
   {
@@ -134,6 +135,28 @@ const projects = [
 
     path: "/projects/water-dispenser",
   },
+  {
+    number: "07",
+    title: "Personal Portfolio Website",
+    category: "WEB DEVELOPMENT",
+
+    description:
+      "This site — a React, TypeScript, and Vite portfolio with React Router-based case study pages per project and a role-tailored resume selector.",
+
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Router",
+    ],
+
+    image: portfolioWebsiteImage,
+
+    path: "/projects/portfolio-website",
+
+    github:
+      "https://github.com/Jcplayer06/joshua-carbon-website-portfolio",
+  },
 ];
 
 
@@ -150,7 +173,7 @@ export default function ProjectsPage() {
       <section className="projects-page-header">
 
         <p className="section-label">
-          SELECTED WORK / 06 PROJECTS
+          SELECTED WORK / 07 PROJECTS
         </p>
 
         <h1>
