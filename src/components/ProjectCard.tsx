@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Project } from "../data/projects";
+import PortfolioSystemThumbnail from "./PortfolioSystemThumbnail";
 
 interface ProjectCardProps {
   project: Project;
@@ -85,11 +86,19 @@ export default function ProjectCard({
     "water-dispenser":
       "/projects/water-dispenser",
 
+    aiquanta:
+      "/projects/aiquanta",
+
+    "portfolio-website":
+      "/projects/portfolio-website",
+
   };
 
 
   const projectRoute =
     projectRoutes[project.id];
+
+  const isPortfolioProject = project.id === "portfolio-website";
 
 
   return (
@@ -122,6 +131,12 @@ export default function ProjectCard({
             {project.category}
           </span>
 
+          {project.clientProject && (
+            <span className="project-client-tag">
+              CLIENT PROJECT
+            </span>
+          )}
+
         </div>
 
 
@@ -129,33 +144,32 @@ export default function ProjectCard({
             PROJECT IMAGE
         ================================================= */}
 
-        <button
-          type="button"
-          className="project-image-button"
-          onClick={() =>
-            setIsImageOpen(true)
-          }
-          aria-label={`View ${project.title} image`}
-        >
-
-          <div className="project-image">
-
-            <img
-              src={project.image}
-              alt={`${project.title} project`}
-            />
-
-            <div className="image-overlay">
-
-              <span>
-                Click to enlarge
-              </span>
-
-            </div>
-
+        {isPortfolioProject ? (
+          <PortfolioSystemThumbnail />
+        ) : project.restricted ? (
+          <div className="project-image project-image-restricted">
+            <span>CLIENT-RESTRICTED</span>
+            <strong>Project visual withheld</strong>
+            <small>Selected client information is intentionally not published.</small>
           </div>
-
-        </button>
+        ) : project.image ? (
+          <button
+            type="button"
+            className="project-image-button"
+            onClick={() => setIsImageOpen(true)}
+            aria-label={`View ${project.title} image`}
+          >
+            <div className="project-image">
+              <img src={project.image} alt={`${project.title} project`} />
+              <div className="image-overlay"><span>Click to enlarge</span></div>
+            </div>
+          </button>
+        ) : (
+          <div className="project-image project-image-restricted">
+            <span>PROJECT VISUAL</span>
+            <strong>Visual not published</strong>
+          </div>
+        )}
 
 
         {/* =================================================
@@ -242,26 +256,33 @@ export default function ProjectCard({
                 to={projectRoute}
                 className="project-action-link"
               >
-                View Case Study →
+                View Project Brief →
               </Link>
 
             )}
 
 
-            {project.id ===
-              "qa-automation" &&
-              project.github && (
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-action-link"
+              >
+                Live Website ↗
+              </a>
+            )}
 
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-action-link"
-                >
-                  View GitHub →
-                </a>
-
-              )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-action-link"
+              >
+                View GitHub ↗
+              </a>
+            )}
 
           </div>
 
@@ -274,7 +295,7 @@ export default function ProjectCard({
           IMAGE LIGHTBOX
       ================================================= */}
 
-      {isImageOpen && (
+      {isImageOpen && project.image && !isPortfolioProject && (
 
         <div
           className="image-lightbox"

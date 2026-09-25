@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Piso WiFi client setup schematic</title>
+  <desc id="desc">Illustrative network flow showing PLDT internet, TP-Link equipment, Omada controller, captive portal, voucher access and payment workflow.</desc>
+  <rect width="1280" height="720" fill="#020b12"/>
+  <g opacity="0.32" stroke="#155d78" stroke-width="1">
+    <path d="M0 80H1280M0 160H1280M0 240H1280M0 320H1280M0 400H1280M0 480H1280M0 560H1280M0 640H1280"/>
+    <path d="M80 0V720M160 0V720M240 0V720M320 0V720M400 0V720M480 0V720M560 0V720M640 0V720M720 0V720M800 0V720M880 0V720M960 0V720M1040 0V720M1120 0V720M1200 0V720"/>
+  </g>
+  <text x="54" y="58" fill="#22b9ff" font-family="monospace" font-size="18" letter-spacing="4">CLIENT NETWORK SETUP / ILLUSTRATIVE</text>
+  <text x="54" y="86" fill="#608697" font-family="monospace" font-size="11" letter-spacing="2">PHYSICAL CONNECTION → CONTROLLER → ACCESS → PAYMENT</text>
+
+  <g stroke="#1ebaff" stroke-width="2" fill="#061722">
+    <rect x="70" y="250" width="180" height="130" rx="8"/>
+    <rect x="325" y="250" width="180" height="130" rx="8"/>
+    <rect x="580" y="250" width="180" height="130" rx="8"/>
+    <rect x="835" y="170" width="180" height="130" rx="8"/>
+    <rect x="835" y="350" width="180" height="130" rx="8"/>
+    <rect x="1090" y="250" width="130" height="130" rx="8"/>
+  </g>
+  <g fill="#1ebaff" font-family="monospace" text-anchor="middle">
+    <text x="160" y="284" font-size="15">PLDT</text><text x="160" y="308" font-size="11" fill="#8fb2c0">INTERNET SOURCE</text>
+    <text x="160" y="340" font-size="12">WAN / LAN</text>
+    <text x="415" y="284" font-size="15">TP-LINK</text><text x="415" y="308" font-size="11" fill="#8fb2c0">NETWORK DEVICE</text>
+    <text x="415" y="340" font-size="12">WIRELESS</text>
+    <text x="670" y="284" font-size="15">OMADA</text><text x="670" y="308" font-size="11" fill="#8fb2c0">WEB CONTROLLER</text>
+    <text x="670" y="340" font-size="12">CONFIG / MANAGE</text>
+    <text x="925" y="204" font-size="15">PORTAL</text><text x="925" y="228" font-size="11" fill="#8fb2c0">CAPTIVE ACCESS</text><text x="925" y="270" font-size="12">LOGIN / VOUCHER</text>
+    <text x="925" y="384" font-size="15">PAYMENT</text><text x="925" y="408" font-size="11" fill="#8fb2c0">CLIENT WORKFLOW</text><text x="925" y="450" font-size="12">GCASH / COINSLOT</text>
+    <text x="1155" y="296" font-size="15">WIFI</text><text x="1155" y="320" font-size="11" fill="#8fb2c0">CLIENT ACCESS</text><text x="1155" y="356" font-size="12">PISO WIFI</text>
+  </g>
+  <g fill="none" stroke="#23b9ff" stroke-width="3">
+    <path d="M250 315H325"/>
+    <path d="M505 315H580"/>
+    <path d="M760 315C805 315 805 235 835 235"/>
+    <path d="M760 315C805 315 805 415 835 415"/>
+    <path d="M1015 235C1055 235 1055 315 1090 315"/>
+    <path d="M1015 415C1055 415 1055 315 1090 315"/>
+  </g>
+  <g fill="#26c0ff"><circle cx="288" cy="315" r="4"/><circle cx="543" cy="315" r="4"/><circle cx="797" cy="315" r="4"/><circle cx="1055" cy="315" r="4"/></g>
+  <text x="1090" y="560" fill="#7898a8" font-family="monospace" font-size="10" letter-spacing="2">HARDWARE SETUP / CONTROLLER CONFIGURATION / ACCESS CONTROL / TESTING</text>
+  <text x="1090" y="588" fill="#1ebaff" font-family="monospace" font-size="10" letter-spacing="2">NOT A PHYSICAL TOPOLOGY DIAGRAM</text>
+</svg>

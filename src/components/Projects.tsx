@@ -14,7 +14,9 @@ export default function Projects() {
     projects.filter(
       (project) =>
         project.id !==
-        "japanese-character"
+          "japanese-character" &&
+        project.archiveGroup !==
+          "client"
     );
 
 
@@ -42,8 +44,8 @@ export default function Projects() {
         <p>
           A collection of software,
           artificial intelligence,
-          QA automation, IoT,
-          and embedded systems
+          QA automation, web, IoT,
+          embedded, and client engineering
           projects.
         </p>
 

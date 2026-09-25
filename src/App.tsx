@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
@@ -14,29 +14,21 @@ import SmartParkingPage from "./pages/SmartParkingPage";
 import MotorPHPage from "./pages/MotorPHPage";
 import WaterDispenserPage from "./pages/WaterDispenserPage";
 import PortfolioWebsitePage from "./pages/PortfolioWebsitePage";
+import AIQUANTAPage from "./pages/AIQUANTAPage";
+import ClientProjectPage from "./pages/ClientProjectPage";
 
-import heroBackground from "./assets/hero-tech-bg.png";
+import AnimatedTechBackground from "./components/AnimatedTechBackground";
 
 import "./App.css";
 
-function App() {
-  return (
-    <BrowserRouter>
+function AppShell() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
+  return (
       <div className="portfolio">
 
-        {/* GLOBAL BACKGROUND */}
-
-        <div
-          className="global-tech-background"
-          style={{
-            backgroundImage: `url(${heroBackground})`,
-          }}
-        />
-
-        <ScrollToTop />
-
-        <Navbar />
+        {!isHome && <AnimatedTechBackground />}
 
         <Routes>
 
@@ -112,6 +104,14 @@ function App() {
           />
 
 
+          {/* AIQUANTA */}
+
+          <Route
+            path="/projects/aiquanta"
+            element={<AIQUANTAPage />}
+          />
+
+
           {/* PORTFOLIO WEBSITE */}
 
           <Route
@@ -119,10 +119,30 @@ function App() {
             element={<PortfolioWebsitePage />}
           />
 
+
+          {/* FREELANCE / CLIENT PROJECTS */}
+
+          {/* Parameterized route is the canonical client-project path. */}
+          <Route path="/projects/client/:projectId" element={<ClientProjectPage />} />
+
+          {/* Legacy/direct slugs remain supported. */}
+          <Route path="/projects/thermal-therapy-device" element={<ClientProjectPage />} />
+          <Route path="/projects/wallpaper-applicator" element={<ClientProjectPage />} />
+          <Route path="/projects/iot-water-quality" element={<ClientProjectPage />} />
+          <Route path="/projects/piso-wifi" element={<ClientProjectPage />} />
+
         </Routes>
 
       </div>
+  );
+}
 
+function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Navbar />
+      <AppShell />
     </BrowserRouter>
   );
 }
