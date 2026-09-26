@@ -356,7 +356,7 @@ export default function AboutMatrixCanvas() {
       } else {
         stop();
       }
-    }, { rootMargin: "220px 0px" });
+    }, { rootMargin: "0px" });
     io.observe(section);
     window.addEventListener("resize", setup);
     if (pointerFine && !budget.lowPower) window.addEventListener("pointermove", onPointerMove, { passive: true });

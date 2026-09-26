@@ -935,7 +935,8 @@ export default function SkillsEngineeringCanvas() {
     let board: Board | null = null;
     let dpr = 1;
     let raf = 0;
-    let visible = true;
+    let visible = false;
+    let running = false;
     let last = performance.now();
     let time = 0;
     let hv: number[] = [];
@@ -1179,21 +1180,31 @@ export default function SkillsEngineeringCanvas() {
       }
     };
 
+    const stop = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      running = false;
+    };
+
     const frame = (now: number) => {
+      if (document.hidden || !visible || reduced) {
+        stop();
+        return;
+      }
+
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       step(dt);
       drawDyn();
       raf = requestAnimationFrame(frame);
     };
+
     const start = () => {
-      if (reduced || raf || !visible || document.hidden) return;
+      if (reduced || running || !visible || document.hidden) return;
+
+      running = true;
       last = performance.now();
       raf = requestAnimationFrame(frame);
-    };
-    const stop = () => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = 0;
     };
 
     const onHover = (e: Event) => {
@@ -1209,7 +1220,10 @@ export default function SkillsEngineeringCanvas() {
       rebuild();
       start();
     };
-    const onVis = () => (document.hidden ? stop() : start());
+    const onVis = () => {
+      if (document.hidden) stop();
+      else start();
+    };
 
     let rt = 0;
     const scheduleRebuild = () => {
@@ -1225,7 +1239,7 @@ export default function SkillsEngineeringCanvas() {
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible) start(); else stop();
-    }, { rootMargin: "120px" });
+    }, { rootMargin: "0px" });
     io.observe(host);
     const late = window.setTimeout(rebuild, 700); // after webfonts settle card heights
     window.addEventListener("skill-card-hover", onHover as EventListener);

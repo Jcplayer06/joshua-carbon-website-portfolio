@@ -1188,7 +1188,7 @@ function ContactGlobeNetwork() {
       } else {
         stop();
       }
-    }, { rootMargin: "180px 0px" });
+    }, { rootMargin: "0px" });
     io.observe(networkCanvas.parentElement ?? networkCanvas);
     reducedQ.addEventListener("change", onReduced);
     document.addEventListener("visibilitychange", onVisibilityChange);

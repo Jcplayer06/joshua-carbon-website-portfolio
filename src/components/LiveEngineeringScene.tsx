@@ -173,6 +173,7 @@ export default function LiveEngineeringScene() {
     const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let reducedMotion = reducedMotionQuery.matches;
     let raf = 0;
+    let running = false;
     let last = performance.now();
     let elapsed = 0;
     let width = 1;
@@ -200,7 +201,7 @@ export default function LiveEngineeringScene() {
     let dragStartYaw = 0;
     let dragStartPitch = 0;
     let activePointerId: number | null = null;
-    let heroVisible = true;
+    let heroVisible = false;
     let documentVisible = !document.hidden;
     let nodes: NodePoint[] = [];
     let packets: Packet[] = [];
@@ -903,15 +904,20 @@ export default function LiveEngineeringScene() {
       bgContext.fillRect(cx - radius * 1.2, cy - radius * 1.2, radius * 2.4, radius * 2.4);
     };
 
-    const shouldRender = () => heroVisible && documentVisible;
+    const stop = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      running = false;
+    };
 
     const render = (now: number) => {
-      if (!shouldRender()) {
-        raf = requestAnimationFrame(render);
+      if (!heroVisible || !documentVisible) {
+        stop();
         return;
       }
 
       const minFrameInterval = width < 1100 ? 20 : 16.7;
+
       if (now - lastFrameRender < minFrameInterval) {
         raf = requestAnimationFrame(render);
         return;
@@ -920,12 +926,24 @@ export default function LiveEngineeringScene() {
       const delta = Math.min(40, now - last);
       last = now;
       lastFrameRender = now;
+
       if (!reducedMotion) elapsed += delta;
+
       pointerX += (targetPointerX - pointerX) * 0.055;
       pointerY += (targetPointerY - pointerY) * 0.055;
 
       drawBackground(elapsed, delta);
       drawGlobe(elapsed, delta);
+
+      raf = requestAnimationFrame(render);
+    };
+
+    const start = () => {
+      if (running || !heroVisible || !documentVisible) return;
+
+      running = true;
+      last = performance.now();
+      lastFrameRender = 0;
       raf = requestAnimationFrame(render);
     };
 
@@ -936,9 +954,11 @@ export default function LiveEngineeringScene() {
     const observer = new IntersectionObserver(
       (entries) => {
         heroVisible = entries.some((entry) => entry.isIntersecting);
+
         if (heroVisible) {
-          last = performance.now();
-          lastFrameRender = 0;
+          start();
+        } else {
+          stop();
         }
       },
       { threshold: 0.05 },
@@ -947,9 +967,11 @@ export default function LiveEngineeringScene() {
 
     const onVisibilityChange = () => {
       documentVisible = !document.hidden;
+
       if (documentVisible) {
-        last = performance.now();
-        lastFrameRender = 0;
+        start();
+      } else {
+        stop();
       }
     };
 
@@ -964,7 +986,7 @@ export default function LiveEngineeringScene() {
     window.addEventListener("scroll", onWindowScroll, { passive: true });
     reducedMotionQuery.addEventListener("change", onMotionPreferenceChange);
     document.addEventListener("visibilitychange", onVisibilityChange);
-    raf = requestAnimationFrame(render);
+    start();
 
     return () => {
       cancelAnimationFrame(raf);
