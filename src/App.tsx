@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import SEO from "./components/SEO";
 
 import Home from "./pages/Home";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -141,6 +142,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <SEO />
       <Navbar />
       <AppShell />
     </BrowserRouter>
