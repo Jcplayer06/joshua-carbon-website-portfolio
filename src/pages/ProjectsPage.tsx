@@ -151,7 +151,7 @@ function ProjectLabCard({
       >
         <span className="project-lab-card-image">
           {project.image ? (
-            <img src={project.image} alt="" loading="lazy" decoding="async" />
+            <img src={project.image} alt={`${project.title} project preview`} />
           ) : (
             <span className="project-lab-artifact-empty">CLIENT PROJECT · VISUAL LIMITED</span>
           )}

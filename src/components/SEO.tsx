@@ -13,7 +13,7 @@ const META: Record<string, PageMeta> = {
   "/": {
     title: "Joshua Carbon | Computer Engineer — Software, QA Automation & AI",
     description:
-      "Joshua Carbon project portfolio featuring software applications, QA automation, AI/computer vision systems, web development, and embedded IoT projects. Computer Engineering graduate from Mapúa University.",
+      "Joshua Carbon's project portfolio featuring software, QA automation, AI/computer vision, web development, and embedded IoT engineering projects.",
   },
   "/projects": {
     title: "Projects | Joshua Carbon — Computer Engineer",
@@ -332,4 +332,3 @@ export default function SEO() {
 
   return null;
 }
-
